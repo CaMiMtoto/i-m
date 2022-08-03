@@ -114,7 +114,7 @@
                         Transfers
                     </button>
                     <button type="button"
-                            class="btn tw-mx-0.2 tw-my-1 btn-lg lg:tw-px-8 tw-rounded-none tw-bg-gray-400 tw-text-gray-100 ">
+                            class="btn tw-mx-0.2 tw-my-1 btn-lg lg:tw-px-8 tw-rounded-none tw-bg-gray-400 tw-text-gray-100 hover:tw-bg-[#4CCCFC]">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              width="24px" height="24px" viewBox="0 0 24 24">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -131,7 +131,7 @@
                         Utility Payments
                     </button>
                     <button type="button"
-                            class="btn tw-mx-0.2 tw-my-1 btn-lg lg:tw-px-8 tw-rounded-none tw-bg-gray-400 tw-text-gray-100 ">
+                            class="btn tw-mx-0.2 tw-my-1 btn-lg lg:tw-px-8 tw-rounded-none tw-bg-gray-400 tw-text-gray-100  hover:tw-bg-[#4CCCFC]">
 
                         <svg xmlns="http://www.w3.org/2000/svg"
                              width="24px" height="24px" viewBox="0 0 24 24">
@@ -146,7 +146,7 @@
                         E-Statements
                     </button>
                     <button type="button"
-                            class="btn tw-mx-0.2 tw-my-1 btn-lg lg:tw-px-8 tw-rounded-none tw-bg-gray-400 tw-text-gray-100 ">
+                            class="btn tw-mx-0.2 tw-my-1 btn-lg lg:tw-px-8 tw-rounded-none tw-bg-gray-400 tw-text-gray-100 hover:tw-bg-[#4CCCFC] ">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              width="24px" height="24px" viewBox="0 0 24 24">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -161,7 +161,7 @@
                         History
                     </button>
                     <button type="button"
-                            class="btn tw-mx-0.2 tw-my-1 btn-lg tw-rounded-l-none lg:tw-px-8 tw-bg-gray-400 tw-text-gray-100 lg:tw-rounded-r-xl">
+                            class="btn tw-mx-0.2 tw-my-1 btn-lg tw-rounded-l-none lg:tw-px-8 tw-bg-gray-400 tw-text-gray-100 lg:tw-rounded-r-xl hover:tw-bg-[#4CCCFC]">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              width="24px" height="24px" viewBox="0 0 24 24">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -317,7 +317,11 @@
                 </div>
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
-                        <img src="../assets/chart.png" alt="Charts" class="tw-h-20 tw-rounded-2xl"/>
+                        <!--                        <img src="../assets/chart.png" alt="Charts" class="tw-h-20 tw-rounded-2xl"/>-->
+                        <div>
+                            <canvas id="myChart"  class="tw-w-20"></canvas>
+                        </div>
+
                         <div>
                             <div class="text-muted tw-text-sm">Transfer daily limit</div>
                             <div>10,0000,000 RWF</div>
@@ -541,6 +545,53 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+    const labels = [
+        'Daily transfers',
+        'Remain',
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Transfer daily limit',
+                backgroundColor: [
+                    '#0A3E8A',
+                    '#4BCCFE',
+                ],
+                hoverOffset: 4,
+                // borderColor: 'rgb(255, 99, 132)',
+                data: [80000000, 20000000],
+            }
+        ]
+    };
+
+    const config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    display: false,
+                },
+                title: {
+                    display: false,
+                    text: 'Chart.js Doughnut Chart'
+                }
+            }
+        }
+    };
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+</script>
 
 </body>
 
