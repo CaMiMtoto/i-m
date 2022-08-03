@@ -4,3 +4,7 @@ body {
     background-size: cover;
     min-height: 100vh;
 }
+
+.form-control.is-valid, .was-validated .form-control:valid {
+    background-image: url('../assets/check.svg') !important;
+}
